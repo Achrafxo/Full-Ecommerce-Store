@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def LogPage(request):
+    return render(request, 'Authentication/login.html')
