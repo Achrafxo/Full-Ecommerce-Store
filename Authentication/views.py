@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
 
-def LogPage(request):
+def LoginPage(request):
     return render(request, 'Authentication/login.html')
+
+def RegisterPage(request):
+    return render(request, 'Authentication/register.html')
