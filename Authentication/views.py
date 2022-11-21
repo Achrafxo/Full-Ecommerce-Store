@@ -13,7 +13,7 @@ def LoginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'LOGED IN')
+            return redirect('storepage')
         else:
             messages.warning(request, 'there is an error')
     return render(request, 'Authentication/login.html')
@@ -35,3 +35,13 @@ def RegisterPage(request):
         'form':form
     }
     return render(request, 'Authentication/register.html', context)
+
+
+def StorePage(request):
+    return render(request, 'Authentication/index.html')
+
+
+def Logoutfunction(request):
+    
+    logout(request)
+    return redirect('storepage')
