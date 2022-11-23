@@ -1,8 +1,13 @@
 from django.shortcuts import render
-
+from .models import *
 
 def home(request):
-    return render(request, 'core/index.html')
+    products = Product.objects.all()
+
+    context = {
+        "products":products
+    }
+    return render(request, 'core/index.html', context)
 
 
 
@@ -19,6 +24,11 @@ def Contact(request):
 
 
 def Product_Details(request, pk):
-    return render(request, 'core/Product_Details.html')
+    product = Product.objects.get(id=pk)
+
+    context = {
+        "product":product
+    }
+    return render(request, 'core/Product_Details.html', context)
 
     
