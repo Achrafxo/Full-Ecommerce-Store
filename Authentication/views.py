@@ -4,6 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import *
 
+#to use home url in Login and sign in functions
+from core.views import home
+
+
 
 
 def LoginPage(request):
@@ -13,7 +17,7 @@ def LoginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('storepage')
+            return redirect('home')
         else:
             messages.warning(request, 'there is an error')
     return render(request, 'Authentication/login.html')
@@ -31,17 +35,15 @@ def RegisterPage(request):
             messages.success(request, 'Welcome ' + username +'! Your account have been created succesfully.')
             user = authenticate(request, username=username, password=password)
             login(request, user)
+            return redirect('home')
     context = {
         'form':form
     }
     return render(request, 'Authentication/register.html', context)
 
 
-def StorePage(request):
-    return render(request, 'Authentication/index.html')
-
 
 def Logoutfunction(request):
     
     logout(request)
-    return redirect('storepage')
+    return redirect('home')

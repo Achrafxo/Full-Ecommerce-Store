@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #local apps
     'Authentication',
+    'core',
+    
+    #3rd party
     'tailwind',
     'theme',
     'django_browser_reload'
